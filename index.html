@@ -39,15 +39,14 @@
         </nav>
     </header>
     <main class="px-[8.4rem] roboto-font">
-        <section id="category-container" class=" font-normal *:text-lg bg-[#EEEFFF] text-[#858585] flex justify-between mt-8 mb-10">
-            <p class="btn btn-sm px-3 rounded-md btn-ghost ">Home</p>
-            <p class="btn btn-sm px-3 rounded-md btn-ghost ">Home</p>
-            <p class="btn btn-sm px-3 rounded-md btn-ghost ">Home</p>
-            <p class="btn btn-sm px-3 rounded-md btn-ghost ">Home</p>
+        <!-- buttons category start from here  -->
+        <section id="category-container" class=" font-normal *:text-lg text-[#858585] flex justify-between mt-8 mb-10">
+
         </section>
+        <!-- category item found is here  -->
         <section>
             <div>
-                <h4 class="p-5 mb-10 bg-white rounded-lg font-normal text-lg"><span id="category-count">4</span> items found for category Entertainment</h4>
+                <h4 class="p-5 mb-10 bg-white rounded-lg font-normal text-lg"><span id="category-count">0</span> items found for category <span id="category-name">Entertainment</span></h4>
             </div>
         </section>
         <section>
@@ -62,12 +61,12 @@
                     </select>
                 </div>
                 <div class="*:font-normal flex gap-3 *:text-lg">
-                    <button class="btn py-2 bg-[#5D5FEF] text-white px-5">Today’s Pick</button>
-                    <button class="btn btn-ghost text-[#5D5FEF] border border-[#5D5FEF] py-2 px-5">Trending</button>
+                    <button onclick="todayPicksBtn()" class="btn py-2 bg-[#5D5FEF] text-white px-5">Today’s Pick</button>
+                    <button onclick="trendingBtn()" class="btn btn-ghost focus:text-white focus:bg-[#5D5FEF] text-[#5D5FEF] border border-[#5D5FEF] py-2 px-5">Trending</button>
                 </div>
             </div>
             <div id="card-container" class="flex flex-col gap-6">
-                <div class="p-5 rounded-xl bg-white flex gap-8 shadow-lg">
+                <!-- <div class="">
                     <figure >
                         <img class="min-w-60" src="./images/boy.png" alt="">
                     </figure>
@@ -104,7 +103,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </main>
