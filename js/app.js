@@ -41,13 +41,20 @@ const trendingBtn = () => {
     displayCategoryData(categoryIdHolder, categoryNameHolder, true, false)
 }
 
-const displayCategoryData = async (id, idName, isTrending, isTodaysPick) => {
+function getType() {
+    const option = document.getElementById("cars").value;
+    console.log(option)
+    displayCategoryData(categoryIdHolder, categoryNameHolder, false, false, option)
+}
+
+const displayCategoryData = async (id, idName, isTrending, isTodaysPick, isSortValue) => {
     categoryIdHolder = id;
     categoryNameHolder = idName;
     const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
     const data  = await res.json()
     let cards = data.data;
     
+    // adding interactive of today and trending btn 
     if (isTodaysPick) {
         cards = cards.filter(ele => ele.others_info.is_todays_pick === true);
     }
@@ -57,12 +64,25 @@ const displayCategoryData = async (id, idName, isTrending, isTodaysPick) => {
     
     categoryCount.innerText = cards.length;
     categoryName.innerText = idName;
+    // document.getElementById("cars").value = "Default";
 
     cardContainer.textContent = "";
 
+    // sort by value
+    if (isSortValue === "View") {
+        cards.sort((a, b) => {
+            const first = a.total_view;
+            const second = b.total_view;
+            return second - first;
+        })
+    }
+    
+
+   
+
 
     cards.forEach(card => {
-        console.log(card.others_info.is_todays_pick)
+        console.log(card.rating.number)
 
         if (card?.total_view) {
             cardView = `

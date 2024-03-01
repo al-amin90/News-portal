@@ -46,14 +46,14 @@
         <!-- category item found is here  -->
         <section>
             <div>
-                <h4 class="p-5 mb-10 bg-white rounded-lg font-normal text-lg"><span id="category-count">0</span> items found for category <span id="category-name">Entertainment</span></h4>
+                <h4 class="p-5 mb-10 bg-white rounded-lg font-normal text-lg"><span id="category-count">0</span> items found for category <span id="category-name" class="text-[#5D5FEF]">Entertainment</span></h4>
             </div>
         </section>
         <section>
             <div class="flex justify-between mb-16">
                 <div class="flex items-center gap-5">
                     <h5 class="font-normal text-lg text-black">Sort By View:</h5>
-                    <select name="cars" id="cars" class="py-2 px-4 text-[#ABADC6]">
+                    <select onchange="getType()" name="cars" id="cars" class="py-2 px-4 text-[#ABADC6]">
                         <option value="Default">Default</option>
                         <option value="View">View</option>
                         <option value="opel">Opel</option>
