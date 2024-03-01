@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- daisy ui & tailwind CDN  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- google font link  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        .roboto-font{
+            font-family: "Roboto", sans-serif;
+        }
+        .playFair-font{
+            font-family: "Playfair Display", serif;
+            /* color: #1e1e1e;; */
+
+        }
+    </style>
+</head>
+<body class="max-w-[1440px] mx-auto bg-[#F6F6F6]">
+    <header class="px-20">
+        <nav class="flex justify-between py-8 border-b-2 px-14">
+            <div class="flex items-center text-base font-bold playFair-font">
+                <button class="mr-3 btn py-3 px-5 text-white bg-[#5D5FEF]">News</button>
+                <h3 class="text-[#5D5FEF] ">Portal</h3>
+            </div>
+            <div class="flex items-center text-base space-x-9 roboto-font">
+                <h3 class=" text-[#5D5FEF] font-bold cursor-pointer">Portal</h3>
+                <h3 class="hover:text-[#5D5FEF] text-[#A3A3A3] font-normal cursor-pointer">Blog</h3>
+                <img src="./images/Avatar.png" alt="">
+            </div>
+        </nav>
+    </header>
+    <main class="px-[8.4rem] roboto-font">
+        <section id="category-container" class=" font-normal *:text-lg bg-[#EEEFFF] text-[#858585] flex justify-between mt-8 mb-10">
+            <p class="btn btn-sm px-3 rounded-md btn-ghost ">Home</p>
+            <p class="btn btn-sm px-3 rounded-md btn-ghost ">Home</p>
+            <p class="btn btn-sm px-3 rounded-md btn-ghost ">Home</p>
+            <p class="btn btn-sm px-3 rounded-md btn-ghost ">Home</p>
+        </section>
+        <section>
+            <div>
+                <h4 class="p-5 mb-10 bg-white rounded-lg font-normal text-lg"><span id="category-count">4</span> items found for category Entertainment</h4>
+            </div>
+        </section>
+        <section>
+            <div class="flex justify-between mb-16">
+                <div class="flex items-center gap-5">
+                    <h5 class="font-normal text-lg text-black">Sort By View:</h5>
+                    <select name="cars" id="cars" class="py-2 px-4 text-[#ABADC6]">
+                        <option value="Default">Default</option>
+                        <option value="View">View</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+                <div class="*:font-normal flex gap-3 *:text-lg">
+                    <button class="btn py-2 bg-[#5D5FEF] text-white px-5">Today’s Pick</button>
+                    <button class="btn btn-ghost text-[#5D5FEF] border border-[#5D5FEF] py-2 px-5">Trending</button>
+                </div>
+            </div>
+            <div id="card-container" class="flex flex-col gap-6">
+                <div class="p-5 rounded-xl bg-white flex gap-8 shadow-lg">
+                    <figure >
+                        <img class="min-w-60" src="./images/boy.png" alt="">
+                    </figure>
+                    <div>
+                        <h3 class="text-2xl text-black font-bold mb-3">The best fashion influencers to follow for sartorial inspiration</h3>
+                        <p class="font-normal text-base">From our favourite UK influencers to the best missives from Milan and the coolest New Yorkers, read on some of the best
+                        fashion blogs out there, and for even more inspiration, do head to our separate black fashion influencer round-up.
+                        
+                        Fancy some shopping deals? Check out these amazing sales: Zara Black Friday, ASOS Black Friday, Missoma Black Friday and
+                        Gucci Black Friday...</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <div class="*:font-normal flex items-center gap-3">
+                                <div>
+                                    <img src="./images/Rectangle 19.png" alt="">
+                                </div>
+                                <div>
+                                    <h5 class="text-black text-base">Jane Cooper</h5>
+                                    <h5 class="text-sm">Jan 10, 2022</h5>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <figure><img src="./images/carbon_view.png" alt=""></figure>
+                                <h4 class="text-lg font-bold text-[#515151]">1.5M</h4>
+                            </div>
+                            <div class="rating flex items-center gap-3 ">
+                                <input type="radio" name="rating-1" class="mask mask-star-2" />
+                                <input type="radio" name="rating-1" class="mask mask-star-2" checked />
+                                <input type="radio" name="rating-1" class="mask mask-star-2" />
+                                <input type="radio" name="rating-1" class="mask mask-star-2" />
+                                <input type="radio" name="rating-1" class="mask mask-star-2" />
+                            </div>
+                            <div>
+                                <figure><img class="cursor-pointer" src="./images/arrow.png" alt=""></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="text-center bg-white mt-20 playFair-font">
+        <h2 class="font-bold text-base text-[#949494] py-8">Copyright 2021 News Portal</h2>
+    </footer>
+    <script src="./js/app.js"></script>
+</body>
+</html>
