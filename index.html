@@ -13,6 +13,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+    <!-- font awesome link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .roboto-font{
             font-family: "Roboto", sans-serif;
@@ -51,10 +55,10 @@
         </section>
         <section>
             <div class="flex justify-between mb-16">
-                <div class="flex items-center gap-5">
+                <div id="normalSort" class="flex items-center gap-5">
                     <h5 class="font-normal text-lg text-black">Sort By View:</h5>
                     <select onchange="getType()" name="cars" id="cars" class="py-2 px-4 text-[#ABADC6]">
-                        <option value="Default">Default</option>
+                        <option id="Default" value="Default">Default</option>
                         <option value="View">View</option>
                         <option value="opel">Opel</option>
                         <option value="audi">Audi</option>
@@ -91,12 +95,8 @@
                                 <figure><img src="./images/carbon_view.png" alt=""></figure>
                                 <h4 class="text-lg font-bold text-[#515151]">1.5M</h4>
                             </div>
-                            <div class="rating flex items-center gap-3 ">
-                                <input type="radio" name="rating-1" class="mask mask-star-2" />
-                                <input type="radio" name="rating-1" class="mask mask-star-2" checked />
-                                <input type="radio" name="rating-1" class="mask mask-star-2" />
-                                <input type="radio" name="rating-1" class="mask mask-star-2" />
-                                <input type="radio" name="rating-1" class="mask mask-star-2" />
+                            <div class="rating flex *:text-2xl items-center gap-3 ">
+                                
                             </div>
                             <div>
                                 <figure><img class="cursor-pointer" src="./images/arrow.png" alt=""></figure>

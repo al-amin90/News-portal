@@ -7,6 +7,8 @@ let cardView = '';
 let categoryIdHolder = "01";
 let categoryNameHolder = "Breaking News";
 
+let changeCateID = false;
+
 
 const loadCategory = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
@@ -25,6 +27,8 @@ const displayCategory = (categorys) => {
 
         // after click the catefory btn 
         buttonEle.addEventListener("click", () => {
+            document.getElementById("cars").value = "Default";
+            
             document.querySelectorAll(".category-btns").forEach(btnC => btnC.classList.remove("bg-[#EEEFFF]", "text-[#5D5FEF]"));
 
             buttonEle.classList.add("bg-[#EEEFFF]", "text-[#5D5FEF]")
@@ -41,15 +45,22 @@ const trendingBtn = () => {
     displayCategoryData(categoryIdHolder, categoryNameHolder, true, false)
 }
 
+// our new function 
 function getType() {
     const option = document.getElementById("cars").value;
-    console.log(option)
+    console.log("clicked")
+    displayCategoryData(categoryIdHolder, categoryNameHolder, false, false, option)
+}
+function getTypeCate() {
+    const option = document.getElementById("carsCate").value;
+    console.log("clicked")
     displayCategoryData(categoryIdHolder, categoryNameHolder, false, false, option)
 }
 
 const displayCategoryData = async (id, idName, isTrending, isTodaysPick, isSortValue) => {
     categoryIdHolder = id;
     categoryNameHolder = idName;
+
     const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
     const data  = await res.json()
     let cards = data.data;
@@ -64,10 +75,10 @@ const displayCategoryData = async (id, idName, isTrending, isTodaysPick, isSortV
     
     categoryCount.innerText = cards.length;
     categoryName.innerText = idName;
-    // document.getElementById("cars").value = "Default";
-
+    
     cardContainer.textContent = "";
 
+    
     // sort by value
     if (isSortValue === "View") {
         cards.sort((a, b) => {
@@ -77,13 +88,43 @@ const displayCategoryData = async (id, idName, isTrending, isTodaysPick, isSortV
         })
     }
     
-
+    
+   
    
 
 
     cards.forEach(card => {
         console.log(card.rating.number)
+        let star = ""
+        if (card.rating.number < 4.5) {
+            star = `
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            `;
+        }
+        else if (card.rating.number >= 4.5 && card.rating.number < 5) {
+            star = `
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            `;
+        }
+        else if (card.rating.number === 5) {
+            star = `
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            `;
+        }
 
+        // card total view condition 
         if (card?.total_view) {
             cardView = `
             <figure><img src="./images/carbon_view.png" alt=""></figure>
@@ -116,12 +157,8 @@ const displayCategoryData = async (id, idName, isTrending, isTodaysPick, isSortV
                         
                         ${cardView}
                     </div>
-                    <div class="rating flex items-center gap-3 ">
-                        <input type="radio" name="rating-1" class="mask mask-star-2" />
-                        <input type="radio" name="rating-1" class="mask rating-half mask-star-2" checked />
-                        <input type="radio" name="rating-1" class="mask rating-half mask-star-2" />
-                        <input type="radio" name="rating-1" class="mask rating-half mask-star-2" />
-                        <input type="radio" name="rating-1" class="mask rating-half mask-star-2" />
+                    <div class="rating *:text-2xl flex items-center gap-3 ">
+                        ${star}
                     </div>
                     <div>
                         <figure><img class="cursor-pointer" src="./images/arrow.png" alt=""></figure>
@@ -130,7 +167,9 @@ const displayCategoryData = async (id, idName, isTrending, isTodaysPick, isSortV
             </div>
         `
         cardContainer.appendChild(cardDiv)
-        })
+    })
+
+    
 }
 
 
