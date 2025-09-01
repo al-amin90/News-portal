@@ -1,76 +1,108 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <!-- daisy ui & tailwind CDN  -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- google font link  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <!-- font awesome link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
-        .roboto-font{
-            font-family: "Roboto", sans-serif;
-        }
-        .playFair-font{
-            font-family: "Playfair Display", serif;
-            /* color: #1e1e1e;; */
-
-        }
+      .roboto-font {
+        font-family: "Roboto", sans-serif;
+      }
+      .playFair-font {
+        font-family: "Playfair Display", serif;
+        /* color: #1e1e1e;; */
+      }
     </style>
-</head>
-<body class="max-w-[1440px] mx-auto bg-[#F6F6F6]">
+  </head>
+  <body class="max-w-[1440px] mx-auto bg-[#F6F6F6]">
     <header class="px-20">
-        <nav class="flex justify-between py-8 border-b-2 px-14">
-            <div class="flex items-center text-base font-bold playFair-font">
-                <button class="mr-3 btn py-3 px-5 text-white bg-[#5D5FEF]">News</button>
-                <h3 class="text-[#5D5FEF] ">Portal</h3>
-            </div>
-            <div class="flex items-center text-base space-x-9 roboto-font">
-                <h3 class=" text-[#5D5FEF] font-bold cursor-pointer">Portal</h3>
-                <h3 class="hover:text-[#5D5FEF] text-[#A3A3A3] font-normal cursor-pointer">Blog</h3>
-                <img src="./images/Avatar.png" alt="">
-            </div>
-        </nav>
+      <nav class="flex justify-between py-8 border-b-2 px-14">
+        <div class="flex items-center text-base font-bold playFair-font">
+          <button class="mr-3 btn py-3 px-5 text-white bg-[#5D5FEF]">
+            News
+          </button>
+          <h3 class="text-[#5D5FEF]">Portal</h3>
+        </div>
+        <div class="flex items-center text-base space-x-9 roboto-font">
+          <h3 class="text-[#5D5FEF] font-bold cursor-pointer">Portal</h3>
+          <h3
+            class="hover:text-[#5D5FEF] text-[#A3A3A3] font-normal cursor-pointer"
+          >
+            Blog
+          </h3>
+          <img src="./images/Avatar.png" alt="" />
+        </div>
+      </nav>
     </header>
-    <main class="px-[8.4rem] roboto-font">
-        <!-- buttons category start from here  -->
-        <section id="category-container" class=" font-normal *:text-lg text-[#858585] flex justify-between mt-8 mb-10">
 
-        </section>
-        <!-- category item found is here  -->
-        <section>
-            <div>
-                <h4 class="p-5 mb-10 bg-white rounded-lg font-normal text-lg"><span id="category-count">0</span> items found for category <span id="category-name" class="text-[#5D5FEF]">Entertainment</span></h4>
-            </div>
-        </section>
-        <section>
-            <div class="flex justify-between mb-16">
-                <div id="normalSort" class="flex items-center gap-5">
-                    <h5 class="font-normal text-lg text-black">Sort By View:</h5>
-                    <select onchange="getType()" name="cars" id="cars" class="py-2 px-4 text-[#ABADC6]">
-                        <option id="Default" value="Default">Default</option>
-                        <option value="View">View</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                </div>
-                <div class="*:font-normal flex gap-3 *:text-lg">
-                    <button onclick="todayPicksBtn()" class="btn py-2 bg-[#5D5FEF] text-white px-5">Today’s Pick</button>
-                    <button onclick="trendingBtn()" class="btn btn-ghost focus:text-white focus:bg-[#5D5FEF] text-[#5D5FEF] border border-[#5D5FEF] py-2 px-5">Trending</button>
-                </div>
-            </div>
-            <div id="card-container" class="flex flex-col gap-6">
-                <!-- <div class="">
+    <main class="px-[8.4rem] roboto-font">
+      <!-- buttons category start from here  -->
+      <section
+        id="category-container"
+        class="font-normal *:text-lg text-[#858585] flex justify-between mt-8 mb-10"
+      ></section>
+
+      <!-- category item found is here  -->
+      <section>
+        <div>
+          <h4 class="p-5 mb-10 bg-white rounded-lg font-normal text-lg">
+            <span id="category-count">0</span> items found for category
+            <span id="category-name" class="text-[#5D5FEF]">Entertainment</span>
+          </h4>
+        </div>
+      </section>
+
+      <section>
+        <div class="flex justify-between mb-16">
+          <div id="normalSort" class="flex items-center gap-5">
+            <h5 class="font-normal text-lg text-black">Sort By View:</h5>
+            <!-- onchange="getType()" -->
+            <select name="cars" id="cars" class="py-2 px-4 text-[#ABADC6]">
+              <option id="Default" value="Default">Default</option>
+              <option value="View">View</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select>
+          </div>
+          <div class="*:font-normal flex gap-3 *:text-lg">
+            <button
+              onclick="todayPicksBtn()"
+              class="btn py-2 bg-[#5D5FEF] text-white px-5"
+            >
+              Today’s Pick
+            </button>
+            <button
+              onclick="trendingBtn()"
+              class="btn btn-ghost focus:text-white focus:bg-[#5D5FEF] text-[#5D5FEF] border border-[#5D5FEF] py-2 px-5"
+            >
+              Trending
+            </button>
+          </div>
+        </div>
+        <div id="card-container" class="flex flex-col gap-6">
+          <!-- <div class="">
                     <figure >
                         <img class="min-w-60" src="./images/boy.png" alt="">
                     </figure>
@@ -104,12 +136,14 @@
                         </div>
                     </div>
                 </div> -->
-            </div>
-        </section>
+        </div>
+      </section>
     </main>
     <footer class="text-center bg-white mt-20 playFair-font">
-        <h2 class="font-bold text-base text-[#949494] py-8">Copyright 2021 News Portal</h2>
+      <h2 class="font-bold text-base text-[#949494] py-8">
+        Copyright 2021 News Portal
+      </h2>
     </footer>
-    <script src="./js/app.js"></script>
-</body>
+    <script src="./js/app2.js"></script>
+  </body>
 </html>
