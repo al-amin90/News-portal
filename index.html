@@ -78,8 +78,13 @@
         <div class="flex justify-between mb-16">
           <div id="normalSort" class="flex items-center gap-5">
             <h5 class="font-normal text-lg text-black">Sort By View:</h5>
-            <!-- onchange="getType()" -->
-            <select name="cars" id="cars" class="py-2 px-4 text-[#ABADC6]">
+
+            <select
+              onchange="viewFilter()"
+              name="filter"
+              id="filter"
+              class="py-2 px-4 text-[#ABADC6] rounded-md"
+            >
               <option id="Default" value="Default">Default</option>
               <option value="View">View</option>
               <option value="opel">Opel</option>

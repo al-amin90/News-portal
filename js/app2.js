@@ -3,6 +3,32 @@ const categoryCount = document.getElementById("category-count");
 const categoryName = document.getElementById("category-name");
 const cardContainer = document.getElementById("card-container");
 
+let cardView = "";
+let categoryIdHolder = "08";
+let categoryNameHolder = "All News";
+let isTrendingHolder = true;
+let isTodaysPickHolder = true;
+
+const trendingBtn = () => {
+  displayCategoryData(categoryIdHolder, categoryNameHolder, true, false);
+};
+
+const todayPicksBtn = () => {
+  displayCategoryData(categoryIdHolder, categoryNameHolder, false, true);
+};
+
+const viewFilter = () => {
+  const filterValue = document.getElementById("filter").value;
+  console.log(`Selected filter: ${filterValue}`);
+  displayCategoryData(
+    categoryIdHolder,
+    categoryNameHolder,
+    isTrendingHolder,
+    isTodaysPickHolder,
+    filterValue
+  );
+};
+
 const loadCategory = async () => {
   const category = await fetch(
     "https://openapi.programming-hero.com/api/news/categories"
@@ -43,14 +69,35 @@ const displayCategory = (categorys) => {
   });
 };
 
-const displayCategoryData = async (id, idName) => {
+const displayCategoryData = async (
+  id,
+  idName,
+  isTrending,
+  isTodaysPick,
+  filterValue
+) => {
+  categoryIdHolder = id;
+  categoryNameHolder = idName;
+  isTrendingHolder = isTrending;
+  isTodaysPickHolder = isTodaysPick;
+
   const res = await fetch(
     `https://openapi.programming-hero.com/api/news/category/${id}`
   );
   const { data } = await res.json();
-  console.log(data);
+  let cards = data;
 
-  const cards = data;
+  if (isTrending) {
+    cards = cards.filter((ele) => ele.others_info.is_trending === true);
+  }
+
+  if (isTodaysPick) {
+    cards = cards.filter((ele) => ele.others_info.is_todays_pick === true);
+  }
+
+  if (filterValue === "View") {
+    cards = cards.sort((a, b) => b.total_view - a.total_view);
+  }
 
   categoryCount.innerText = cards.length;
   categoryName.innerText = idName;
@@ -59,6 +106,7 @@ const displayCategoryData = async (id, idName) => {
 
   cards.forEach((card) => {
     const rating = card.rating.number;
+    console.log(card);
     let star = "";
     if (rating < 4.5) {
       star = `
@@ -84,6 +132,17 @@ const displayCategoryData = async (id, idName) => {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
             `;
+    }
+
+    // card total view condition
+    if (card?.total_view) {
+      cardView = `
+            <figure><img src="./images/carbon_view.png" alt=""></figure>
+            <h4 class="text-lg font-bold text-[#515151]">${
+              card?.total_view || "???"
+            }M</h4>`;
+    } else {
+      cardView = "";
     }
 
     const cardDiv = document.createElement("div");
@@ -115,8 +174,7 @@ const displayCategoryData = async (id, idName) => {
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
-                    
-                    {cardView}
+                    ${cardView}
                 </div>
                 <div class="rating *:text-2xl flex items-center gap-3 ">
                     ${star}
@@ -133,3 +191,4 @@ const displayCategoryData = async (id, idName) => {
 };
 
 loadCategory();
+displayCategoryData(categoryIdHolder, categoryNameHolder, false, false);
